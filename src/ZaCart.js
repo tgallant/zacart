@@ -19,7 +19,8 @@ class ZaCart extends Component {
       newToppings: [],
       maxedOut: false,
       orderPrice: 0,
-      contents: []
+      contents: [],
+      dropdownOpen: false
     }
 
     this.handleSizeSelect = this.handleSizeSelect.bind(this)
@@ -27,6 +28,7 @@ class ZaCart extends Component {
     this.handleCheckout = this.handleCheckout.bind(this)
     this.handleCartRemove = this.handleCartRemove.bind(this)
     this.handleComplete = this.handleComplete.bind(this)
+    this.handleDropdown = this.handleDropdown.bind(this)
   }
 
   handleSizeSelect (size) {
@@ -103,41 +105,58 @@ class ZaCart extends Component {
   handleComplete () {
     const { contents } = this.state
     const pizzas = contents.map(() => '🍕').join('')
+
     alert(pizzas)
-    this.setState({ contents: [] })
+
+    this.setState({ contents: [], dropdownOpen: false })
+  }
+
+  handleDropdown () {
+    const { dropdownOpen } = this.state
+    this.setState({ dropdownOpen: !dropdownOpen })
   }
 
   render () {
     const { sizes } = this.props
 
     const {
+      newPizza,
       newToppings,
       maxedOut,
       orderPrice,
-      contents
+      contents,
+      dropdownOpen
     } = this.state
 
     return (
       <main className='zacart'>
-        <Cart
-          contents={contents}
-          handleCartRemove={this.handleCartRemove}
-          handleComplete={this.handleComplete}
-        />
-        <PizzaSizes
-          sizes={sizes}
-          handleSizeSelect={this.handleSizeSelect}
-        />
-        <Toppings
-          toppings={newToppings}
-          maxedOut={maxedOut}
-          handleToppingsSelect={this.handleToppingsSelect}
-        />
-        <Checkout
-          orderPrice={orderPrice}
-          toppings={newToppings}
-          handleCheckout={this.handleCheckout}
-        />
+        <div className='row'>
+          <Cart
+            contents={contents}
+            dropdownOpen={dropdownOpen}
+            handleDropdown={this.handleDropdown}
+            handleCartRemove={this.handleCartRemove}
+            handleComplete={this.handleComplete}
+          />
+        </div>
+        <div className='pizza-config row' data-active={newPizza.name != null}>
+          <PizzaSizes
+            sizes={sizes}
+            handleSizeSelect={this.handleSizeSelect}
+          />
+          <Toppings
+            toppings={newToppings}
+            maxedOut={maxedOut}
+            handleToppingsSelect={this.handleToppingsSelect}
+          />
+        </div>
+        <div className='row'>
+          <Checkout
+            orderPrice={orderPrice}
+            toppings={newToppings}
+            handleCheckout={this.handleCheckout}
+          />
+        </div>
       </main>
     )
   }

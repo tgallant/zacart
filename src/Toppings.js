@@ -1,7 +1,8 @@
 import React from 'react'
 
 const Toppings = ({ toppings, maxedOut, handleToppingsSelect }) => (
-  <section className='pizza-toppings'>
+  <section className='pizza-toppings column'>
+    <h3>Pick your toppings:</h3>
     {toppings.map(({ topping, selected }) => (
       <div className='pizza-topping' key={topping.name}>
         <input
@@ -11,7 +12,7 @@ const Toppings = ({ toppings, maxedOut, handleToppingsSelect }) => (
           disabled={!selected && maxedOut}
           onChange={handleToppingsSelect.bind(this, topping.name)}
         />
-        <label type='checkbox'>
+        <label className='label-inline'>
           {`${topping.name}: $${topping.price}`}
         </label>
       </div>

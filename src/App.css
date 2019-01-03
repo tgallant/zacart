@@ -1,32 +1,131 @@
-.App {
+.zacart {
+  margin: 0 auto;
+  max-width: 631px;
+  padding: 1rem 2rem;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-link {
+  cursor: pointer;
+  position: relative;
+  text-decoration: underline;
+}
+
+.cart-link:after {
+  content: '▼';
+  font-size: 1rem;
+  position: absolute;
+  top: 4px;
+}
+
+[data-open="true"] .cart-link:after {
+  content: '▲';
+}
+
+.cart-dropdown {
+  background: #f8f3fc;
+  border: 2px solid #9b4dca;
+  border-radius: .4rem;
+  max-height: 300px;
+  overflow: scroll;
+  padding: 2rem;
+  position: absolute;
+  right: 0;
+  transform: translateY(-1000px);
+  z-index: 2;
+}
+
+[data-open="true"] .cart-dropdown {
+  transform: translateY(30px);
+}
+
+.cart-item {
+  border-bottom: 1px solid #606c76;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.cart-item button {
+  height: auto;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-right: 15px;
+  padding: 4px;
+  position: relative;
+}
+
+.cart-item-name {
+  text-transform: capitalize;
+}
+
+.cart-item-price {
+  float: right;
+}
+
+.cart-total {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.pizza-config {
+  height: 350px;
+}
+
+.pizza-sizes, .pizza-toppings {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.pizza-sizes {
+  transform: translateX(0);
+  transition: transform 0.2s;
+  z-index: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+[data-active="false"] .pizza-sizes {
+  transform: translateX(50%);
 }
 
-.App-link {
-  color: #61dafb;
+.pizza-toppings {
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+[data-active="false"] .pizza-toppings {
+  opacity: 0;
+}
+
+.pizza-topping {
+  margin: 0 auto;
+  text-align: left;
+  width: 210px;
+}
+
+.checkout {
+  text-align: center;
+}
+
+.checkout-total {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .zacart {
+    max-width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .pizza-config {
+    height: auto;
+  }
+
+  .pizza-sizes, .pizza-toppings {
+    margin-bottom: 2.5rem;
+  }
+
+  [data-active="false"] .pizza-sizes {
+    transform: translateX(0);
   }
 }

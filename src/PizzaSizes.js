@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PizzaSizes = ({ sizes, handleSizeSelect }) => (
-  <section className='pizza-sizes'>
+  <section className='pizza-sizes column'>
     <h3>Select a size:</h3>
     {sizes.map(size => (
       <div className='pizza-size' key={size.name}>
