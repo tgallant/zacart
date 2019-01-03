@@ -1,3 +1,5 @@
+/* global alert */
+
 import React, { Component } from 'react'
 import PizzaSizes from './PizzaSizes'
 import Toppings from './Toppings'
@@ -34,7 +36,7 @@ class ZaCart extends Component {
       maxToppings: size.maxToppings
     }
 
-    const { newToppings, price } = size.toppings.reduce((acc, cur)=> {
+    const { newToppings, price } = size.toppings.reduce((acc, cur) => {
       cur.selected = cur.defaultSelected
 
       if (cur.selected) {
