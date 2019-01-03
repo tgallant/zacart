@@ -9,7 +9,7 @@ import './App.css'
 import ZaCart from './ZaCart'
 
 const client = new ApolloClient({
-  uri: 'https://core-graphql.dev.waldo.photos/pizza'
+  uri: process.env.REACT_APP_API_URL
 })
 
 const query = gql`
