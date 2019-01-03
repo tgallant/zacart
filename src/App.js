@@ -6,6 +6,7 @@ import { ApolloProvider, Query } from 'react-apollo';
 import './App.css';
 import PizzaSizes from './PizzaSizes'
 import Toppings from './Toppings'
+import Checkout from './Checkout'
 
 const client = new ApolloClient({
   uri: 'https://core-graphql.dev.waldo.photos/pizza'
@@ -27,17 +28,6 @@ const query = gql`
     }
   }
 `
-
-const Checkout = ({ toppings, orderPrice, handleCheckout }) => (
-  <section className='checkout'>
-    <span>
-      {`Total: $${orderPrice}`}
-    </span>
-    <button onClick={handleCheckout} disabled={orderPrice === 0}>
-      Add to cart
-    </button>
-  </section>
-)
 
 const Cart = ({ contents, handleCartRemove, handleComplete }) => (
   <section className='cart'>
