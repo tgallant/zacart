@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider, Query } from 'react-apollo';
+
 import './App.css';
+import PizzaSizes from './PizzaSizes'
 
 const client = new ApolloClient({
   uri: 'https://core-graphql.dev.waldo.photos/pizza'
@@ -24,19 +26,6 @@ const query = gql`
     }
   }
 `
-
-const PizzaSizes = ({ sizes, handleSizeSelect }) => (
-  <section className='pizza-sizes'>
-    <h3>Select a size:</h3>
-    {sizes.map(size => (
-      <div className='pizza-size' key={size.name}>
-        <button className='' onClick={handleSizeSelect.bind(this, size)}>
-          {`${size.name}: $${size.basePrice}`}
-        </button>
-      </div>
-    ))}
-  </section>
-)
 
 const Toppings = ({ toppings, maxedOut, handleToppingsSelect }) => (
   <section className='pizza-toppings'>
