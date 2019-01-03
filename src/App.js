@@ -5,6 +5,7 @@ import { ApolloProvider, Query } from 'react-apollo';
 
 import './App.css';
 import PizzaSizes from './PizzaSizes'
+import Toppings from './Toppings'
 
 const client = new ApolloClient({
   uri: 'https://core-graphql.dev.waldo.photos/pizza'
@@ -26,25 +27,6 @@ const query = gql`
     }
   }
 `
-
-const Toppings = ({ toppings, maxedOut, handleToppingsSelect }) => (
-  <section className='pizza-toppings'>
-    {toppings.map(({ topping, selected }) => (
-      <div className='pizza-topping' key={topping.name}>
-        <input
-          type='checkbox'
-          name={topping.name}
-          checked={selected}
-          disabled={!selected && maxedOut}
-          onChange={handleToppingsSelect.bind(this, topping.name)}
-        />
-        <label type='checkbox'>
-          {`${topping.name}: $${topping.price}`}
-        </label>
-      </div>
-    ))}
-  </section>
-)
 
 const Checkout = ({ toppings, orderPrice, handleCheckout }) => (
   <section className='checkout'>
