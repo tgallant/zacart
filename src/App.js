@@ -3,6 +3,8 @@ import gql from 'graphql-tag'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider, Query } from 'react-apollo'
 
+import 'normalize.css/normalize.css'
+import 'milligram/dist/milligram.min.css'
 import './App.css'
 import ZaCart from './ZaCart'
 
