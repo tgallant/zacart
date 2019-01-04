@@ -1,6 +1,8 @@
 # ZaCart
 
-https://elegant-yalow-91cd0a.netlify.com/
+Project Spec: https://gist.github.com/vmasto/12ee08aede12746df1596beb41454273
+
+Production URL: https://elegant-yalow-91cd0a.netlify.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
